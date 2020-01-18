@@ -45,5 +45,34 @@ function pigIt(str){
     return stringArray.join(' ');
 }
 
-console.log(pigIt('Pig latin is cool'));
-console.log(pigIt('Hello world !'));
+// console.log(pigIt('Pig latin is cool'));
+// console.log(pigIt('Hello world !'));
+
+//Implement the function unique_in_order which takes as argument a sequence and returns a list of items without
+// any elements with the same value next to each other and preserving the original order of elements.
+
+
+function uniqueInOrder(iterable){
+    let result = [];
+    if (Array.isArray(iterable)){
+        for (let i = iterable.length-1; i >= 0; i--) {
+            if(iterable[i] === iterable[--i]){
+                iterable.splice(i, 1);
+            }
+        }
+        result = iterable
+    } else {
+        let splitArray = iterable.split('');
+        for (let i = 0; i < splitArray.length; i++) {
+            if(splitArray[i] !== splitArray[i+1]){
+                result.push(splitArray[i]);
+            }
+        }
+    }
+    return result
+}
+
+
+// console.log(uniqueInOrder('AAAABBBCCDAABBB'));
+// console.log(uniqueInOrder('ABBCcAD'));
+// console.log(uniqueInOrder([1,2,2,3,3]));
